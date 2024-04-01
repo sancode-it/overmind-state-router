@@ -1,0 +1,11 @@
+dist
+lib
+es
+node_modules
+build
+**/*.min.js
+**/bundle.js
+coverage/
+**/vendor/
+*.d.ts
+*.js.map

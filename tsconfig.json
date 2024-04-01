@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "jsx": "react",
+    "rootDir": "src",
+    "outDir": "dist",
+    "newLine": "LF",
+    "lib": ["dom", "ES2020"],
+    "moduleResolution": "node",
+    "strictNullChecks": true,
+    "declaration": true,
+    "pretty": true,
+    "sourceMap": true,
+    "inlineSources": true
+  },
+  "exclude": ["src/test", "src/**/*.test.ts", "lib", "es"]
+}

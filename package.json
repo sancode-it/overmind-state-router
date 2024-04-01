@@ -1,0 +1,114 @@
+{
+  "name": "overmind-state-router",
+  "version": "0.0.0-next",
+  "description": "",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./es/index.d.ts",
+        "default": "./es/index.js"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      }
+    },
+    "./base": {
+      "import": {
+        "types": "./es/base.d.ts",
+        "default": "./es/base.js"
+      },
+      "require": {
+        "types": "./lib/base.d.ts",
+        "default": "./lib/base.js"
+      }
+    },
+    "./operators": {
+      "import": {
+        "types": "./es/operators/index.d.ts",
+        "default": "./es/operators/index.js"
+      },
+      "require": {
+        "types": "./lib/operators/index.d.ts",
+        "default": "./lib/operators/index.js"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sancode-it/overmind-state-router.git"
+  },
+  "author": "Henri Hulski <henri@sancode.it>",
+  "bugs": {
+    "url": "https://github.com/sancode-it/overmind-state-router/issues"
+  },
+  "homepage": "https://github.com/sancode-it/overmind-state-router#readme",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "scripts": {
+    "build": "npm run build:lib & npm run build:es",
+    "build:es": "tsc --outDir es --module ES2020 --target ES2020",
+    "build:lib": "tsc --outDir lib",
+    "clean": "rimraf es lib coverage",
+    "commitlint": "commitlint --edit",
+    "coverage": "vitest run --coverage",
+    "format": "eslint --fix \"**/*.js\" \"**/*.ts\" && prettier --write \"**/*.js\" \"**/*.ts\" \"**/*.md\" \"**/*.json\"",
+    "lint": "eslint \"**/*.js\" \"**/*.ts\" && prettier --check \"**/*.js\" \"**/*.ts\" \"**/*.md\" \"**/*.json\"",
+    "postbuild": "rimraf {lib,es}/**/__tests__",
+    "posttest": "npm run typecheck",
+    "prebuild": "npm run clean",
+    "prepare": "husky || true",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "addressbar-ts": "^1.1.6",
+    "cerebral": "^4.2.2",
+    "url-mapper": "^2.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
+    "@types/node": "^20.12.3",
+    "@typescript-eslint/eslint-plugin": "7.5.0",
+    "@typescript-eslint/parser": "7.5.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-config-standard-jsx": "^11.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-standard": "^4.1.0",
+    "husky": "^9.0.11",
+    "jsdom": "^24.0.0",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "semantic-release": "^23.0.7",
+    "typescript": "^5.4.3",
+    "vitest": "^1.4.0"
+  },
+  "peerDependencies": {
+    "overmind-react": "*",
+    "react": "*"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "*.{js,jsx,ts,tsx,md,json}": "prettier --write"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

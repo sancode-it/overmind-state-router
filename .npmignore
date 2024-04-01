@@ -1,0 +1,4 @@
+src
+*.config.m?js
+tsconfig.json
+.*
