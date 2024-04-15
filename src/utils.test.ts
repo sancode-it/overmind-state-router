@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
 import { Compute } from 'cerebral'
-import { DependencyTracker } from 'cerebral/es/internal'
+import { DependencyTracker } from './cerebralInternal'
 import { state, props } from 'cerebral/tags'
 import { computeShouldChange, flattenConfig } from './utils'
 import { FlatRoutes } from './types'
@@ -66,7 +66,7 @@ describe('flattenConfig', () => {
     })
   })
 
-  test('should parse map and rmap parameters', () => {
+  test.only('should parse map and rmap parameters', () => {
     const config: FlatRoutes = flattenConfig([
       {
         path: '/settings/:tab',
@@ -93,11 +93,13 @@ describe('flattenConfig', () => {
         rmap: { 'some.path': Compute(props`foo`, (foo) => foo + 'x') },
       },
     ])
+    console.log('config', config)
 
     const configKeys: { [key: string]: string[] } = {}
     Object.keys(config).forEach((key) => {
       configKeys[key] = Object.keys(config[key])
     })
+    console.log('configKeys', configKeys)
 
     expect(configKeys).toEqual({
       '/settings/:tab': ['signal', 'map', 'propsMapping'],

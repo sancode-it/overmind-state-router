@@ -1,4 +1,5 @@
-import type { Compute, ModuleClass } from 'cerebral'
+import { ModuleClass } from 'cerebral'
+import { ComputeClass } from './cerebralInternal'
 
 export interface Route {
   path: string
@@ -53,7 +54,7 @@ export interface FlatConfig {
   stateMapping?: any
   computedMapping?: any
   propsMapping?: any
-  rmap?: { [key: string]: typeof Compute }
+  rmap?: { [key: string]: ComputeClass }
   computedRMapping?: any
 }
 

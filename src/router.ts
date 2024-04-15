@@ -1,5 +1,5 @@
 import { type UniversalControllerClass, Provider } from 'cerebral'
-import { getChangedProps } from 'cerebral/internal'
+import { getChangedProps } from './cerebralInternal'
 import {
   computeShouldChange,
   flattenConfig,

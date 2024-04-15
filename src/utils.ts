@@ -1,4 +1,4 @@
-import { dependencyMatch, DependencyTracker } from 'cerebral/es/internal'
+import { dependencyMatch, DependencyTracker } from './cerebralInternal'
 import {
   FlatConfig,
   FlatRoutes,
@@ -21,6 +21,7 @@ export function flattenConfig(config: Route[], prev = '') {
       const conf: FlatConfig = { signal }
       if (map) {
         conf.map = map
+        console.log('map', map)
         const stateMapping = Object.keys(map).filter(
           (key) => map[key].type === 'state'
         )
